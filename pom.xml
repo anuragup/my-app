@@ -69,6 +69,45 @@
           <artifactId>maven-project-info-reports-plugin</artifactId>
           <version>3.0.0</version>
         </plugin>
+        <plugin>
+
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-checkstyle-plugin</artifactId>
+          <version>3.1.1</version>
+
+          <configuration>
+            <failOnViolation>false</failOnViolation>
+            <excludes>.mvn/**/*</excludes>
+          </configuration>
+
+          <executions>
+            <execution>
+              <goals>
+                <goal>check</goal>
+              </goals>
+            </execution>
+          </executions>
+
+         </plugin>
+         <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>findbugs-maven-plugin</artifactId>
+            <version>3.0.4</version>
+            <configuration>
+                <xmlOutput>true</xmlOutput>
+                <effort>Max</effort>
+                <threshold>Low</threshold>
+                <!-- Produces XML report -->
+                <xmlOutput>true</xmlOutput>
+            </configuration>
+            <executions>
+              <execution>
+                  <goals>
+                    <goal>findbugs</goal>
+                  </goals>
+                </execution>
+            </executions>
+          </plugin>
       </plugins>
     </pluginManagement>
   </build>
