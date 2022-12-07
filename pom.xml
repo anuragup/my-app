@@ -89,7 +89,7 @@
           </executions>
 
          </plugin>
-         <plugin>
+       
             <groupId>org.codehaus.mojo</groupId>
             <artifactId>findbugs-maven-plugin</artifactId>
             <version>3.0.4</version>
@@ -110,5 +110,11 @@
           </plugin>
       </plugins>
     </pluginManagement>
+   <distributionManagement>
+    <repository>
+        <id>my-repo</id>
+        <url>https://maven.pkg.jetbrains.space/mycompany/p/projectkey/my-maven-repo</url>
+    </repository>
+  </distributionManagement>
   </build>
 </project>
