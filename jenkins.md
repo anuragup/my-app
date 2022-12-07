@@ -1,6 +1,5 @@
 pipeline {
     agent {label 'mac'}
-   
     stages {
         stage ('CheckOut') {
             steps {
@@ -60,5 +59,5 @@ pipeline {
         
        }
      }
-  }
+   }
 }
