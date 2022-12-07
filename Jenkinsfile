@@ -7,32 +7,31 @@ pipeline {
                 // Get some code from a GitHub repository
                 git 'https://github.com/anuragup/my-app.git'
 
-                // Run Maven on a Unix agent.
-                //sh "mvn -Dmaven.test.failure.ignore=true clean package"
-
-                // To run Maven on a Windows agent, use
-                 //bat "mvn -Dmaven.test.failure.ignore=true clean package"
+              
             }
         }
         stage ('CodeCheck') {
             steps {
+                // Check coding style standard , we can add more findbugs and pmd as well
                 sh "/usr/local/Cellar/maven/3.8.6/libexec/bin/mvn checkstyle:checkstyle"
             }
             
         }
         stage ('Build') {
             steps {
+                // Build Code
                 sh "/usr/local/Cellar/maven/3.8.6/libexec/bin/mvn -Dmaven.test.skip=true install"
             }
             post {
                 success {
-                    junit 'target/surefire-reports/**/*.xml' 
+                    junit 'target/reports/**/*.xml' 
                 }
             }
         }
         stage ('Tests') {
             steps {
-                sh "/usr/local/Cellar/maven/3.8.6/libexec/bin/mvn test"
+                // Run Tests
+                sh "/usr/local/Cellar/maven/3.8.6/libexec/bin/mvn test -Dmaven.test.failure.ignore=false"
             }
         }
         stage ('SonarScan') {
