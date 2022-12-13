@@ -13,7 +13,7 @@ RUN usermod -u ${USER_ID} -g ${USER_GROUP_ID} jenkins \
 USER jenkins
 
 # copy plugins.txt to the $REF/init.groovy.d directory 
-# that is already set up by the base jenkins image
+
 COPY plugins.txt ${REF}/init.groovy.d/plugins.txt
 # install all plugins listed up there
 RUN install-plugins.sh < ${REF}/init.groovy.d/plugins.txt
